@@ -11,7 +11,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
-    created: "2024-12-12T18:12:25.913121842+09:00"
+    created: "2024-12-12T18:26:39.668732965+09:00"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -89,7 +89,7 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2024-12-12T18:12:25.91353636+09:00"
+    created: "2024-12-12T18:26:39.669064503+09:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -106,4 +106,4 @@ entries:
     urls:
     - https://wow940214.github.io/monitoring/nfs-subdir-external-provisioner-4.0.18.tgz
     version: 4.0.18
-generated: "2024-12-12T18:12:25.879913353+09:00"
+generated: "2024-12-12T18:26:39.638689321+09:00"
