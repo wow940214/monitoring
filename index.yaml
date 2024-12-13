@@ -1,0 +1,105 @@
+apiVersion: v1
+entries:
+  kube-prometheus-stack:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+        - name: Upstream Project
+          url: https://github.com/prometheus-operator/kube-prometheus
+      artifacthub.io/operator: "true"
+    apiVersion: v2
+    appVersion: v0.78.2
+    created: "2024-12-13T08:52:44.95296776Z"
+    dependencies:
+    - condition: crds.enabled
+      name: crds
+      repository: ""
+      version: 0.0.0
+    - condition: kubeStateMetrics.enabled
+      name: kube-state-metrics
+      repository: https://github.com/wow940214/monitoring.git
+      version: 5.27.*
+    - condition: nodeExporter.enabled
+      name: prometheus-node-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 4.42.*
+    - condition: grafana.enabled
+      name: grafana
+      repository: https://github.com/wow940214/monitoring.git
+      version: 8.6.*
+    - condition: windowsMonitoring.enabled
+      name: prometheus-windows-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 0.7.*
+    - condition: prometheusMysqlExporter.enabled
+      name: prometheus-mysql-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 0.7.*
+    - condition: prometheusPushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://github.com/wow940214/monitoring.git
+      version: 1.16.*
+    - condition: prometheusCloudwatchExporter.enabled
+      name: prometheus-cloudwatch-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 0.23.*
+    description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
+      and Prometheus rules combined with documentation and scripts to provide easy
+      to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
+      Prometheus Operator.
+    digest: 925e23d541bc73a7cfd1c022486d8763f278d54121e4189bad49fe1f22d26931
+    home: https://github.com/prometheus-operator/kube-prometheus
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - operator
+    - prometheus
+    - kube-prometheus
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: andrew@quadcorps.co.uk
+      name: andrewgkew
+    - email: gianrubio@gmail.com
+      name: gianrubio
+    - email: github.gkarthiks@gmail.com
+      name: gkarthiks
+    - email: kube-prometheus-stack@sisti.pt
+      name: GMartinez-Sisti
+    - email: github@jkroepke.de
+      name: jkroepke
+    - email: scott@r6by.com
+      name: scottrigby
+    - email: miroslav.hadzhiev@gmail.com
+      name: Xtigyro
+    - email: quentin.bisson@gmail.com
+      name: QuentinBisson
+    name: kube-prometheus-stack
+    sources:
+    - https://github.com/prometheus-community/helm-charts
+    - https://github.com/prometheus-operator/kube-prometheus
+    type: application
+    urls:
+    - https://wow940214.github.io/monitoring/kube-prometheus-stack-66.3.1.tgz
+    version: 66.3.1
+  nfs-subdir-external-provisioner:
+  - apiVersion: v1
+    appVersion: 4.0.2
+    created: "2024-12-13T08:52:44.954368802Z"
+    description: nfs-subdir-external-provisioner is an automatic provisioner that
+      used your *already configured* NFS server, automatically creating Persistent
+      Volumes.
+    digest: 2afe32a9d5ede723e48d7ecd4a3294ec85f0bb5210193cbe984b4ff5ea6bec58
+    home: https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    keywords:
+    - nfs
+    - storage
+    - provisioner
+    kubeVersion: '>=1.9.0-0'
+    name: nfs-subdir-external-provisioner
+    sources:
+    - https://github.com/kubernetes-sigs/nfs-subdir-external-provisioner
+    urls:
+    - https://wow940214.github.io/monitoring/nfs-subdir-external-provisioner-4.0.18.tgz
+    version: 4.0.18
+generated: "2024-12-13T08:52:44.914745071Z"
