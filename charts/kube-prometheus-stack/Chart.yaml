@@ -64,10 +64,6 @@ dependencies:
   name: prometheus-mysql-exporter
   repository: https://github.com/wow940214/monitoring.git
   version: 0.7.*
-- condition: prometheusNginxExporter.enabled
-  name: prometheus-nginx-exporter
-  repository: https://github.com/wow940214/monitoring.git
-  version: 0.10.*
 - condition: prometheusPushgateway.enabled
   name: prometheus-pushgateway
   repository: https://github.com/wow940214/monitoring.git
