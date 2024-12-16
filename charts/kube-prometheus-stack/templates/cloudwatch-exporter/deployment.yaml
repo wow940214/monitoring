@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}-cloudwatch-exporter
+  labels:
+    app: {{ .Release.Name }}-cloudwatch-exporter
+    jobLabel: cloudwatch-exporter
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-cloudwatch-exporter
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-cloudwatch-exporter
+    spec:
+      containers:
+        - name: cloudwatch-exporter
+          image: "prom/cloudwatch-exporter:latest"
+          ports:
+            - name: http
+              containerPort: 9106
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              value: {{ .Values.cloudwatchExporter.awsAccessKeyID }}
+            - name: AWS_SECRET_ACCESS_KEY
+              value: {{ .Values.cloudwatchExporter.awsSecretAccessKey }}
+            - name: AWS_REGION
+              value: {{ .Values.cloudwatchExporter.region }}
+            - name: NAMESPACES
+              value: {{ .Values.cloudwatchExporter.namespaces | toYaml | nindent 12 }}
+      nodeSelector:
+        {{- toYaml .Values.cloudwatchExporter.deployment.spec.template.spec.nodeSelector | nindent 8 }}
+      tolerations:
+        {{- toYaml .Values.cloudwatchExporter.deployment.spec.template.spec.tolerations | nindent 8 }}
