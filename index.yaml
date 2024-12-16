@@ -11,7 +11,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
-    created: "2024-12-16T05:38:16.106233849Z"
+    created: "2024-12-16T06:42:54.362795707Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -33,11 +33,23 @@ entries:
       name: prometheus-windows-exporter
       repository: https://github.com/wow940214/monitoring.git
       version: 0.7.*
+    - condition: prometheusMysqlExporter.enabled
+      name: prometheus-mysql-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 0.7.*
+    - condition: prometheusPushgateway.enabled
+      name: prometheus-pushgateway
+      repository: https://github.com/wow940214/monitoring.git
+      version: 1.16.*
+    - condition: prometheusCloudwatchExporter.enabled
+      name: prometheus-cloudwatch-exporter
+      repository: https://github.com/wow940214/monitoring.git
+      version: 0.23.*
     description: kube-prometheus-stack collects Kubernetes manifests, Grafana dashboards,
       and Prometheus rules combined with documentation and scripts to provide easy
       to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
       Prometheus Operator.
-    digest: 2afde576e528de5feef4b1e99e0fb6fcdb219418ab1ffa627800be3a47d608f3
+    digest: 3aad29b2315ebb4de47ff98abc253bcee3f92d31e916dcd71102a48855d96cdd
     home: https://github.com/prometheus-operator/kube-prometheus
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -68,12 +80,12 @@ entries:
     - https://github.com/prometheus-operator/kube-prometheus
     type: application
     urls:
-    - https://wow940214.github.io/monitoring/kube-prometheus-stack-66.3.1.tgz
+    - https://wow940214.github.io/monitoring/charts/kube-prometheus-stack-66.3.1.tgz
     version: 66.3.1
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2024-12-16T05:38:16.106645727Z"
+    created: "2024-12-16T06:42:54.330821003Z"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -90,76 +102,4 @@ entries:
     urls:
     - https://wow940214.github.io/monitoring/nfs-subdir-external-provisioner-4.0.18.tgz
     version: 4.0.18
-  prometheus-cloudwatch-exporter:
-  - apiVersion: v1
-    appVersion: 0.16.0
-    created: "2024-12-16T05:38:16.107247553Z"
-    description: A Helm chart for prometheus cloudwatch-exporter
-    digest: 86e07ebc4957f14f8002a9f40f1d966a9ec638a98dd9236e25a60d4a55f8decd
-    home: https://github.com/prometheus/cloudwatch_exporter
-    keywords:
-    - aws
-    - cloudwatch
-    - prometheus
-    - exporter
-    maintainers:
-    - email: gianrubio@gmail.com
-      name: gianrubio
-    - email: mail@torstenwalter.de
-      name: torstenwalter
-    - email: asher@asherfoa.com
-      name: asherf
-    name: prometheus-cloudwatch-exporter
-    sources:
-    - https://github.com/prometheus/cloudwatch_exporter
-    urls:
-    - https://wow940214.github.io/monitoring/prometheus-cloudwatch-exporter-0.26.0.tgz
-    version: 0.26.0
-  prometheus-mysql-exporter:
-  - apiVersion: v1
-    appVersion: v0.16.0
-    created: "2024-12-16T05:38:16.107756853Z"
-    description: A Helm chart for prometheus mysql exporter with cloudsqlproxy
-    digest: 43f7ba0b00b53cf75dfea5c699e874facabd58065d0be57cc0b3bde3272e30a7
-    home: https://github.com/prometheus/mysqld_exporter
-    maintainers:
-    - email: juan.chimienti@gmail.com
-      name: juanchimienti
-    - email: monotek23@gmail.com
-      name: monotek
-    name: prometheus-mysql-exporter
-    sources:
-    - https://github.com/prometheus/mysqld_exporter
-    urls:
-    - https://wow940214.github.io/monitoring/prometheus-mysql-exporter-2.8.0.tgz
-    version: 2.8.0
-  prometheus-pushgateway:
-  - annotations:
-      artifacthub.io/license: Apache-2.0
-      artifacthub.io/links: |
-        - name: Chart Source
-          url: https://github.com/prometheus-community/helm-charts
-    apiVersion: v2
-    appVersion: v1.10.0
-    created: "2024-12-16T05:38:16.108447214Z"
-    description: A Helm chart for prometheus pushgateway
-    digest: 080de4db84312aa5e1ef7d2af78c9af564f1ace94d8764b728367d855d732f5b
-    home: https://github.com/prometheus/pushgateway
-    keywords:
-    - pushgateway
-    - prometheus
-    maintainers:
-    - email: gianrubio@gmail.com
-      name: gianrubio
-    - email: christian.staude@staffbase.com
-      name: cstaud
-    - email: rootsandtrees@posteo.de
-      name: zeritti
-    name: prometheus-pushgateway
-    sources:
-    - https://github.com/prometheus/pushgateway
-    type: application
-    urls:
-    - https://wow940214.github.io/monitoring/prometheus-pushgateway-2.15.0.tgz
-    version: 2.15.0
-generated: "2024-12-16T05:38:16.070876021Z"
+generated: "2024-12-16T06:42:54.3302994Z"
