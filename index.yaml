@@ -11,7 +11,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
-    created: "2024-12-16T04:41:11.646944567Z"
+    created: "2024-12-16T05:22:07.521148802Z"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -49,7 +49,7 @@ entries:
       and Prometheus rules combined with documentation and scripts to provide easy
       to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
       Prometheus Operator.
-    digest: 000cb19b19adacc197790159743f4dd28ba00637ab8345cb2255ef5ead18fd43
+    digest: a71c9d5195d85b725ee589093a1ce4113d570fc0f5681c6d384a9b0977ef5b65
     home: https://github.com/prometheus-operator/kube-prometheus
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -85,7 +85,7 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2024-12-16T04:41:11.647284883Z"
+    created: "2024-12-16T05:22:07.521683899Z"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -102,4 +102,4 @@ entries:
     urls:
     - https://wow940214.github.io/monitoring/nfs-subdir-external-provisioner-4.0.18.tgz
     version: 4.0.18
-generated: "2024-12-16T04:41:11.613115219Z"
+generated: "2024-12-16T05:22:07.48402019Z"
