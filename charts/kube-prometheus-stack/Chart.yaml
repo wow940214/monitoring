@@ -60,15 +60,3 @@ dependencies:
   name: prometheus-windows-exporter
   repository: https://github.com/wow940214/monitoring.git
   version: 0.7.*
-- condition: prometheusMysqlExporter.enabled
-  name: prometheus-mysql-exporter
-  repository: https://github.com/wow940214/monitoring.git
-  version: 0.7.*
-- condition: prometheusPushgateway.enabled
-  name: prometheus-pushgateway
-  repository: https://github.com/wow940214/monitoring.git
-  version: 1.16.*
-- condition: prometheusCloudwatchExporter.enabled
-  name: prometheus-cloudwatch-exporter
-  repository: https://github.com/wow940214/monitoring.git
-  version: 0.23.*
