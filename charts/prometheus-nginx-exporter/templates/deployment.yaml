@@ -37,7 +37,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "-nginx.scrape-uri={{ .Values.nginxServer }}"
+            - "-nginx.scrape-uri={{ tpl .Values.nginxServer . }}"
             {{- range $key, $value := .Values.options }}
             - "-{{ $key }}{{ if $value }}={{ $value }}{{ end }}"
             {{- end }}
