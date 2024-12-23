@@ -333,7 +333,7 @@ alertmanager:
       - name: "null"  # "null" receiver 정의
       - name: "slack-notifications"
         slack_configs:
-          - api_url: 'https://hooks.slack.com/services/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'
+          - api_url: 'https://hooks.slack.com/services/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'
             channel: "#경보발생해보는중"
             send_resolved: true
             text: |
