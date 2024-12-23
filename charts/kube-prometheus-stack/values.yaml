@@ -321,8 +321,7 @@ alertmanager:
       resolve_timeout: 10m
 
     route:
-      enabled: true  # route.enabled 설정 추가
-      group_by: [job]
+      group_by: [job, alertname, namespace]
       group_interval: 10s
       group_wait: 5s
       receiver: 'slack'

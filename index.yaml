@@ -8,7 +8,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v0.27.0
-    created: "2024-12-23T18:43:46.789997043+09:00"
+    created: "2024-12-23T18:52:07.866607763+09:00"
     description: The Alertmanager handles alerts sent by client applications such
       as the Prometheus server.
     digest: f70597761c7e9f1187ad869aa4895b1393261a34b95d049e60847e32d1105804
@@ -40,7 +40,7 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
-    created: "2024-12-23T18:43:46.830872743+09:00"
+    created: "2024-12-23T18:52:07.897723616+09:00"
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -66,7 +66,7 @@ entries:
       and Prometheus rules combined with documentation and scripts to provide easy
       to operate end-to-end Kubernetes cluster monitoring with Prometheus using the
       Prometheus Operator.
-    digest: f3f89dcb4a25859feddc8872d7777727dcb775f7ffbbcc7b87d0c39d8ccebbd8
+    digest: dbfa60de5175876932bdc3caadf7b3f37f036ee9a7d325898f1bf9142b17bf2d
     home: https://github.com/prometheus-operator/kube-prometheus
     icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
     keywords:
@@ -102,7 +102,7 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
-    created: "2024-12-23T18:43:46.831573791+09:00"
+    created: "2024-12-23T18:52:07.898150749+09:00"
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -122,7 +122,7 @@ entries:
   prometheus-cloudwatch-exporter:
   - apiVersion: v1
     appVersion: 0.16.0
-    created: "2024-12-23T18:43:46.832083053+09:00"
+    created: "2024-12-23T18:52:07.899725779+09:00"
     description: A Helm chart for prometheus cloudwatch-exporter
     digest: d6c6a02ef78c8d1f1ce8205dff7b71d063ca1d3e1b18e66d8499126a3a534d47
     home: https://github.com/prometheus/cloudwatch_exporter
@@ -147,7 +147,7 @@ entries:
   prometheus-mysql-exporter:
   - apiVersion: v1
     appVersion: v0.16.0
-    created: "2024-12-23T18:43:46.832497924+09:00"
+    created: "2024-12-23T18:52:07.900401691+09:00"
     description: A Helm chart for prometheus mysql exporter with cloudsqlproxy
     digest: f4f71c6b6983ef53fa12b97279fd988360a9d15ae99aaf687d81ee5d63a23eda
     home: https://github.com/prometheus/mysqld_exporter
@@ -174,7 +174,7 @@ entries:
           email: nicolas.lamirault@gmail.com
     apiVersion: v2
     appVersion: 0.11.0
-    created: "2024-12-23T18:43:46.834847075+09:00"
+    created: "2024-12-23T18:52:07.903341691+09:00"
     dependencies:
     - condition: nginx.enabled
       name: nginx
@@ -209,7 +209,7 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.10.0
-    created: "2024-12-23T18:43:46.835464288+09:00"
+    created: "2024-12-23T18:52:07.904082397+09:00"
     description: A Helm chart for prometheus pushgateway
     digest: 6c75fd63d41731c3a4e71e80ad8ea3028b37206d32c757185761a1e7775d0b8b
     home: https://github.com/prometheus/pushgateway
@@ -230,4 +230,4 @@ entries:
     urls:
     - https://wow940214.github.io/monitoring/prometheus-pushgateway-2.15.0.tgz
     version: 2.15.0
-generated: "2024-12-23T18:43:46.789167276+09:00"
+generated: "2024-12-23T18:52:07.864680115+09:00"
