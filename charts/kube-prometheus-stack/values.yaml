@@ -322,10 +322,9 @@ alertmanager:
 
   route:
     enabled: true  # route.enabled 설정 추가
-    group_by:
-      - job
-    group_interval: 30s
-    group_wait: 10s
+    group_by: [job]
+    group_interval: 10s
+    group_wait: 5s
     receiver: 'slack'
     repeat_interval: 1m
 
@@ -333,7 +332,7 @@ alertmanager:
     - name: 'slack'
       slack_configs:
         - send_resolved: true
-          api_url: 'https://hooks.slack.com/services/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'  # Webhook URL
+          api_url: 'https://hooks.slack.com/services/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'  # Webhook URL
           channel: '#경보발생해보는중'
           title: "[{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}"
           text: |
@@ -344,7 +343,6 @@ alertmanager:
             ---
             {{ end }}
           color: '{{ if eq .Status "firing" }}danger{{ else if eq .Status "resolved" }}good{{ else }}warning{{ end }}'  # 상태에 따른 색상
-
   templates:
   - /etc/alertmanager/config/*.tmpl
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
