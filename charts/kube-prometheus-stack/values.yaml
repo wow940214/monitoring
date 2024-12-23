@@ -333,10 +333,7 @@ alertmanager:
       - name: "null"  # "null" receiver 정의
       - name: "slack"
         slack_configs:
-          - api_url:
-              secret:
-                name: slack-webhook-secret
-                key: slack-webhook-url
+          - api_url: 'https://hooks.slack.com/services/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'
             channel: "#alert-test"
             send_resolved: true
             text: |
