@@ -192,7 +192,20 @@ defaultRules:
 #        rules:
 #        - record: my_record
 #          expr: 100 * my_record
-
+additionalPrometheusRules: 
+  - name: custom-rules
+    groups:
+      - name: custom-alerts
+        rules:
+        - alert: KubeNodeNotReady
+          expr: kube_node_status_condition{condition="Ready",job="kube-state-metrics",status="true"} == 0
+          for: 5s
+          labels:
+            severity: warning
+            node: "{{ $labels.node }}"
+          annotations:
+            description: "{{ $labels.node }} is down"
+            
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
 additionalPrometheusRulesMap: {}
@@ -311,9 +324,9 @@ alertmanager:
       group_wait: 5s         
       group_interval: 10s    
       repeat_interval: 1m 
-      receiver: "slack-notifications"
+      receiver: "slack"
     receivers:
-    - name: "slack-notifications"
+    - name: "slack"
       slack_configs:
       - api_url: 'https://hooks.slack.com/services/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'
         channel: "#경보발생해보는중"
