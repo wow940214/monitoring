@@ -1,5 +1,34 @@
 apiVersion: v1
 entries:
+  alertmanager:
+  - annotations:
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Chart Source
+          url: https://github.com/prometheus-community/helm-charts
+    apiVersion: v2
+    appVersion: v0.27.0
+    created: "2024-12-23T17:50:52.92763105+09:00"
+    description: The Alertmanager handles alerts sent by client applications such
+      as the Prometheus server.
+    digest: f70597761c7e9f1187ad869aa4895b1393261a34b95d049e60847e32d1105804
+    home: https://prometheus.io/
+    icon: https://raw.githubusercontent.com/prometheus/prometheus.github.io/master/assets/prometheus_logo-cb55bb5c346.png
+    keywords:
+    - monitoring
+    kubeVersion: '>=1.19.0-0'
+    maintainers:
+    - email: monotek23@gmail.com
+      name: monotek
+    - email: naseem@transit.app
+      name: naseemkullah
+    name: alertmanager
+    sources:
+    - https://github.com/prometheus/alertmanager
+    type: application
+    urls:
+    - https://wow940214.github.io/monitoring/alertmanager-1.13.1.tgz
+    version: 1.13.1
   kube-prometheus-stack:
   - annotations:
       artifacthub.io/license: Apache-2.0
@@ -11,7 +40,11 @@ entries:
       artifacthub.io/operator: "true"
     apiVersion: v2
     appVersion: v0.78.2
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.26978383Z"
+=======
+    created: "2024-12-23T17:50:52.964721638+09:00"
+>>>>>>> c78048f (gogo)
     dependencies:
     - condition: crds.enabled
       name: crds
@@ -73,7 +106,11 @@ entries:
   nfs-subdir-external-provisioner:
   - apiVersion: v1
     appVersion: 4.0.2
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.270154907Z"
+=======
+    created: "2024-12-23T17:50:52.965519537+09:00"
+>>>>>>> c78048f (gogo)
     description: nfs-subdir-external-provisioner is an automatic provisioner that
       used your *already configured* NFS server, automatically creating Persistent
       Volumes.
@@ -93,7 +130,11 @@ entries:
   prometheus-cloudwatch-exporter:
   - apiVersion: v1
     appVersion: 0.16.0
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.270586378Z"
+=======
+    created: "2024-12-23T17:50:52.966553134+09:00"
+>>>>>>> c78048f (gogo)
     description: A Helm chart for prometheus cloudwatch-exporter
     digest: d6c6a02ef78c8d1f1ce8205dff7b71d063ca1d3e1b18e66d8499126a3a534d47
     home: https://github.com/prometheus/cloudwatch_exporter
@@ -118,7 +159,11 @@ entries:
   prometheus-mysql-exporter:
   - apiVersion: v1
     appVersion: v0.16.0
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.271409293Z"
+=======
+    created: "2024-12-23T17:50:52.967487233+09:00"
+>>>>>>> c78048f (gogo)
     description: A Helm chart for prometheus mysql exporter with cloudsqlproxy
     digest: f4f71c6b6983ef53fa12b97279fd988360a9d15ae99aaf687d81ee5d63a23eda
     home: https://github.com/prometheus/mysqld_exporter
@@ -145,14 +190,22 @@ entries:
           email: nicolas.lamirault@gmail.com
     apiVersion: v2
     appVersion: 0.11.0
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.273942762Z"
+=======
+    created: "2024-12-23T17:50:52.969815706+09:00"
+>>>>>>> c78048f (gogo)
     dependencies:
     - condition: nginx.enabled
       name: nginx
       repository: https://github.com/wow940214/monitoring.git
       version: 15.3.4
     description: A Helm chart for NGINX Prometheus Exporter
+<<<<<<< HEAD
     digest: 552f5b4b08749c3cf79ea0754ab2a2f41618ab21b587bbc8cdb60d29fd87e084
+=======
+    digest: d32c58fc51f4e06b90ede9eb05a1d8f566a6047adf2b2dd52609407ef6af9068
+>>>>>>> c78048f (gogo)
     home: https://github.com/nginxinc/nginx-prometheus-exporter
     icon: https://raw.githubusercontent.com/cncf/artwork/master/prometheus/icon/color/prometheus-icon-color.svg
     keywords:
@@ -180,7 +233,11 @@ entries:
           url: https://github.com/prometheus-community/helm-charts
     apiVersion: v2
     appVersion: v1.10.0
+<<<<<<< HEAD
     created: "2024-12-20T12:29:14.274492716Z"
+=======
+    created: "2024-12-23T17:50:52.970723169+09:00"
+>>>>>>> c78048f (gogo)
     description: A Helm chart for prometheus pushgateway
     digest: 6c75fd63d41731c3a4e71e80ad8ea3028b37206d32c757185761a1e7775d0b8b
     home: https://github.com/prometheus/pushgateway
@@ -201,4 +258,8 @@ entries:
     urls:
     - https://wow940214.github.io/monitoring/prometheus-pushgateway-2.15.0.tgz
     version: 2.15.0
+<<<<<<< HEAD
 generated: "2024-12-20T12:29:14.239218178Z"
+=======
+generated: "2024-12-23T17:50:52.926742637+09:00"
+>>>>>>> c78048f (gogo)
