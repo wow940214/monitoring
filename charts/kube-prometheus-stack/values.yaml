@@ -323,7 +323,7 @@ alertmanager:
       group_wait: 5s         
       group_interval: 10s    
       repeat_interval: 1m 
-      receiver: "slack-notifications"
+      receiver: "slack"
       routes:
         - matchers: 
             - alertname="Watchdog"  # Watchdog 알림 제외
@@ -331,10 +331,10 @@ alertmanager:
           continue: false
     receivers:
       - name: "null"  # "null" receiver 정의
-      - name: "slack-notifications"
+      - name: "slack"
         slack_configs:
-          - api_url: 'https://hooks.slack.com/services/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'
-            channel: "#경보발생해보는중"
+          - api_url: 'https://hooks.slack.com/services/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'
+            channel: "#alert-test"
             send_resolved: true
             text: |
               {{ range .Alerts }}
