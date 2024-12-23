@@ -185,27 +185,26 @@ defaultRules:
 
 ## Deprecated way to provide custom recording or alerting rules to be deployed into the cluster.
 ##
-# additionalPrometheusRules: []
-#  - name: my-rule-file
-#    groups:
-#      - name: my_group
-#        rules:
-#        - record: my_record
-#          expr: 100 * my_record
 additionalPrometheusRules: 
   - name: custom-rules
     groups:
       - name: custom-alerts
         rules:
         - alert: KubeNodeNotReady
-          expr: kube_node_status_condition{condition="Ready",job="kube-state-metrics",status="true"} == 0
-          for: 5s
+          expr: kube_node_status_condition{condition="Ready", job="kube-state-metrics", status="true"} == 0
+          for: 10s
           labels:
             severity: warning
-            node: "{{ $labels.node }}"
           annotations:
-            description: "{{ $labels.node }} is down"
-            
+            summary: "노드 {{ $labels.node }}이(가) 다운되었습니다."
+            description: "⚠️ 노드 {{ $labels.node }}이(가) 신속히 조치가 필요합니다."
+#  - name: my-rule-file
+#    groups:
+#      - name: my_group
+#        rules:
+#        - record: my_record
+#          expr: 100 * my_record
+
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
 additionalPrometheusRulesMap: {}
@@ -324,21 +323,30 @@ alertmanager:
       group_wait: 5s         
       group_interval: 10s    
       repeat_interval: 1m 
-      receiver: "slack"
+      receiver: "slack-notifications"
+      routes:
+        - matchers: 
+            - alertname="Watchdog"  # Watchdog 알림 제외
+          receiver: "null"  # "slack-ignore" 대신 "null" receiver 사용
+          continue: false
     receivers:
-    - name: "slack"
-      slack_configs:
-      - api_url: 'https://hooks.slack.com/services/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'
-        channel: "#경보발생해보는중"
-        send_resolved: true
-        text: |
+      - name: "null"  # "null" receiver 정의
+      - name: "slack-notifications"
+        slack_configs:
+          - api_url: 'https://hooks.slack.com/services/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'
+            channel: "#경보발생해보는중"
+            send_resolved: true
+            text: |
               {{ range .Alerts }}
-              *Severity*: {{ .Labels.severity }}
-              *Summary*: {{ .Annotations.summary }}
-              *Description*: {{ .Annotations.description }}
+                {{ if eq .Status "firing" }}
+                  심각도: {{ .Labels.severity }}
+                  노드: {{ .Labels.node }}
+                  설명: ⚠️ 노드 {{ .Labels.node }}이(가) 다운 상태입니다. 신속히 조치가 필요합니다.
+                {{ else if eq .Status "resolved" }}
+                  알림 해제: ✅ 노드 {{ .Labels.node }}이(가) 정상 상태로 복구되었습니다.
+                {{ end }}
               ---
               {{ end }}
-
 
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
   ## stringConfig will be used only, if tplConfig is true
