@@ -192,7 +192,19 @@ defaultRules:
 #        rules:
 #        - record: my_record
 #          expr: 100 * my_record
-
+additionalPrometheusRules: 
+  - name: custom-rules
+    groups:
+      - name: custom-alerts
+        rules:
+        - alert: KubeNodeNotReady
+          expr: kube_node_status_condition{condition="Ready",job="kube-state-metrics",status="true"} == 0
+          for: 5s
+          labels:
+            severity: warning
+            node: "{{ $labels.node }}"
+          annotations:
+            description: "{{ $labels.node }} is down"
 ## Provide custom recording or alerting rules to be deployed into the cluster.
 ##
 additionalPrometheusRulesMap: {}
@@ -306,45 +318,35 @@ alertmanager:
   ##
   config:
     global:
-      resolve_timeout: 5m
-    inhibit_rules:
-      - source_matchers:
-          - 'severity = critical'
-        target_matchers:
-          - 'severity =~ warning|info'
-        equal:
-          - 'namespace'
-          - 'alertname'
-      - source_matchers:
-          - 'severity = warning'
-        target_matchers:
-          - 'severity = info'
-        equal:
-          - 'namespace'
-          - 'alertname'
-      - source_matchers:
-          - 'alertname = InfoInhibitor'
-        target_matchers:
-          - 'severity = info'
-        equal:
-          - 'namespace'
-      - target_matchers:
-          - 'alertname = InfoInhibitor'
-    route:
-      group_by: ['namespace']
-      group_wait: 30s
-      group_interval: 5m
-      repeat_interval: 12h
-      receiver: 'null'
-      routes:
-      - receiver: 'null'
-        matchers:
-          - alertname = "Watchdog"
-    receivers:
-    - name: 'null'
-    templates:
-    - '/etc/alertmanager/config/*.tmpl'
+      resolve_timeout: 10m
 
+  route:
+    enabled: true  # route.enabled 설정 추가
+    group_by:
+      - job
+    group_interval: 30s
+    group_wait: 10s
+    receiver: 'slack'
+    repeat_interval: 1m
+
+  receivers:
+    - name: 'slack'
+      slack_configs:
+        - send_resolved: true
+          api_url: 'https://hooks.slack.com/services/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'  # Webhook URL
+          channel: '#경보발생해보는중'
+          title: "[{{ .Status | toUpper }}] {{ .CommonLabels.alertname }}"
+          text: |
+            {{ range .Alerts }}
+            *Severity*: {{ .Labels.severity }}
+            *Summary*:  {{ .Annotations.summary | default "No summary provided" }}
+            *Description*: {{ .Annotations.description }}
+            ---
+            {{ end }}
+          color: '{{ if eq .Status "firing" }}danger{{ else if eq .Status "resolved" }}good{{ else }}warning{{ end }}'  # 상태에 따른 색상
+
+  templates:
+  - /etc/alertmanager/config/*.tmpl
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
   ## stringConfig will be used only, if tplConfig is true
   ## ref: https://prometheus.io/docs/alerting/configuration/#configuration-file
