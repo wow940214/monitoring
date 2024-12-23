@@ -318,11 +318,11 @@ alertmanager:
   ##
   config:
     global:
-      resolve_timeout: 5m
+      resolve_timeout: 10m
     route:
       group_wait: 5s         
-      group_interval: 10s    
-      repeat_interval: 1m 
+      group_interval: 10m    
+      repeat_interval: 10m 
       receiver: "slack"
       routes:
         - matchers: 
@@ -333,7 +333,7 @@ alertmanager:
       - name: "null"  # "null" receiver 정의
       - name: "slack"
         slack_configs:
-          - api_url: '{{ .Values.alertmanager.slack_api_url }}'
+          - api_url: ''
             channel: "#alert-test"
             send_resolved: true
             text: |
