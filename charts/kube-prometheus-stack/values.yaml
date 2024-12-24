@@ -185,19 +185,7 @@ defaultRules:
 
 ## Deprecated way to provide custom recording or alerting rules to be deployed into the cluster.
 ##
-additionalPrometheusRules: 
-  - name: custom-rules
-    groups:
-      - name: custom-alerts
-        rules:
-        - alert: KubeNodeNotReady
-          expr: kube_node_status_condition{condition="Ready", job="kube-state-metrics", status="true"} == 0
-          for: 10s
-          labels:
-            severity: warning
-          annotations:
-            summary: "노드 {{ $labels.node }}이(가) 다운되었습니다."
-            description: "⚠️ 노드 {{ $labels.node }}이(가) 신속히 조치가 필요합니다."
+additionalPrometheusRules: {} 
 #  - name: my-rule-file
 #    groups:
 #      - name: my_group
