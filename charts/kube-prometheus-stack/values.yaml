@@ -316,37 +316,7 @@ alertmanager:
   ## ref: https://prometheus.io/docs/alerting/configuration/#configuration-file
   ##      https://prometheus.io/webtools/alerting/routing-tree-editor/
   ##
-  config:
-    global:
-      resolve_timeout: 10m
-    route:
-      group_wait: 5s         
-      group_interval: 10m    
-      repeat_interval: 10m 
-      receiver: "slack"
-      routes:
-        - matchers: 
-            - alertname="Watchdog"  # Watchdog 알림 제외
-          receiver: "null"  # "slack-ignore" 대신 "null" receiver 사용
-          continue: false
-    receivers:
-      - name: "null"  # "null" receiver 정의
-      - name: "slack"
-        slack_configs:
-          - api_url: 'https://hooks.slack.com/services/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'
-            channel: "#alert-test"
-            send_resolved: true
-            text: |
-              {{ range .Alerts }}
-                {{ if eq .Status "firing" }}
-                  심각도: {{ .Labels.severity }}
-                  노드: {{ .Labels.node }}
-                  설명: ⚠️ 노드 {{ .Labels.node }}이(가) 다운 상태입니다. 신속히 조치가 필요합니다.
-                {{ else if eq .Status "resolved" }}
-                  알림 해제: ✅ 노드 {{ .Labels.node }}이(가) 정상 상태로 복구되었습니다.
-                {{ end }}
-              ---
-              {{ end }}
+  config: {}
 
   ## Alertmanager configuration directives (as string type, preferred over the config hash map)
   ## stringConfig will be used only, if tplConfig is true
